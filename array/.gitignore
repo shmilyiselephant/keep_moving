@@ -1,0 +1,25 @@
+# Complied class file
+*.class
+
+# Log file
+*.log
+
+# Package Files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+*.exe
+
+# editor files
+*.swap
+
+# WebStorm
+.idea/
+
+**/*.idea
+**/*.iml
+**/*out
