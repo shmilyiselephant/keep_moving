@@ -20,6 +20,9 @@
 # WebStorm
 .idea/
 
+# Pycharm cache
+*pycache*
+
 **/*.idea
 **/*.iml
 **/*out
