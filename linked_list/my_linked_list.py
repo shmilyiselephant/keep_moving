@@ -110,7 +110,7 @@ def remove_node(head, value):
     prev = fast
     while prev._next:
         if prev._next.data == value:
-            prev._next = prev._next._next
+            prev._nexit = prev._next._next
         else:
             prev = prev._next
     return fast._next
