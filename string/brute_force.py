@@ -12,6 +12,6 @@ def nmatching(t,p):
     return -1
 
 if __name__ == "__main__":
-    t = 'aaaaabbbasssa'
-    p = 'as'
+    t = 'abcdefg'
+    p = 'e'
     print(nmatching(t,p))
