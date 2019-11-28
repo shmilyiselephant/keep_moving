@@ -32,4 +32,8 @@ class Trie:
 if __name__ == "__main__":
     new_trie = Trie()
     new_trie.insert("hello")
+    new_trie.insert("world")
     print(new_trie.find("he"))
+    print(new_trie.find("world"))
+    new_trie.insert("hi")
+    print(new_trie.find("hi"))
