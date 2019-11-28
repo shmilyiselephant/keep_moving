@@ -10,7 +10,7 @@ class Node:
 class LinkedStack:
 
     def __init__(self):
-        self.top : Node = None
+        self.top = None
 
     def push(self, value: int):
         new_top = Node(value)
@@ -29,7 +29,7 @@ class LinkedStack:
         while current:
             nums.append(current.data)
             current = current.next
-        return "".join(f"{num}]" for num in nums)
+        return "".join("%s]" % num for num in nums)
 
 if __name__ == "__main__":
     stack = LinkedStack()

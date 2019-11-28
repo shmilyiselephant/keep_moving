@@ -109,10 +109,10 @@ class SinglyLinkedList:
     def print_all(self):
         cur = self.head
         if cur:
-            print(f"{cur.data}",end="")
+            print(cur.data,end="")
             cur = cur.next
         while cur:
-            print(f"->{cur.data}", end="")
+            print(cur.data, end="")
             cur = cur.next
         print("\n", flush=True)
 
@@ -122,13 +122,12 @@ if __name__ == "__main__":
         l.insert_value_to_head(i)
     node9 = l.find_by_value(9)
     l.insert_value_before(node9, 20)
-    #l.insert_value_before(node9, 16)
-    #l.insert_value_before(node9, 16)
-    #l.delete_by_value(16)
-    #node11 = l.find_by_index(3)
-    #l.delete_by_node(node11)
-    #l.delete_by_node(l.head)
-    #l.delete_by_value(13)
-    #print(l)
-    for value in l:
-        print(value)
+    l.insert_value_before(node9, 16)
+    l.insert_value_before(node9, 16)
+    l.delete_by_value(16)
+    node11 = l.find_by_index(3)
+    l.delete_by_node(node11)
+    l.delete_by_node(l.head)
+    print(l)
+    l.delete_by_value(13)
+    print(l)
