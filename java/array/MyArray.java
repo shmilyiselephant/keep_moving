@@ -2,6 +2,12 @@ package array;
 
 import java.util.*;
 
+/**
+ * @author shmilyiselephant
+ * @date 27.12.19
+ * @decription
+ */
+
 public class MyArray{
     private int data[];
     private int capacity;
@@ -17,6 +23,12 @@ public class MyArray{
         this.currentIndex = 0;
         for(int item: this.data)
             item = 0;
+    }
+
+    public MyArray(int data[]) {
+        this.data = data;
+        this.capacity = data.length;
+        this.currentIndex = data.length;
     }
 
     public void printArray() {
@@ -59,16 +71,71 @@ public class MyArray{
         System.out.println();
     }
 
+    //merge two arrays to a new greater array
+    public static MyArray mergeArray(int[] arrayA, int[] arrayB) {
+        int[] result = new int[arrayA.length+arrayB.length];
+        int i = 0;
+        int j = 0;
+        int index = 0;
+        while (i < arrayA.length && j < arrayB.length) {
+            if (arrayA[i] <= arrayB[j]) {
+                result[index] = arrayA[i];
+                i++;
+            } else {
+                result[index] = arrayB[j];
+                j++;
+            }
+            index++;
+        }
+        for (;i < arrayA.length;i++) {
+            result[index] = arrayA[i];
+            index++;
+        }
+        for (;j < arrayB.length;j++) {
+            result[index] = arrayB[j];
+            index++;
+        }
+        return new MyArray(result);
+    }
+
+    //bubble sort
+    public void sort() {
+        for(int i = 0; i < data.length; i++) {
+            int tmp = 0;
+            for(int j = i+1; j < data.length; j++) {
+                if (data[j] < data[i]) {
+                    tmp = data[j];
+                    data[j] = data[i];
+                    data[i] = tmp;
+                }
+            }
+        }
+    }
+
+    public int[] getData(){
+        return this.data;
+    }
+
     public static void main(String args[]) {
         MyArray array = new MyArray(5);
-        array.insertElement(2);
-        array.insertElement(2);
-        array.insertElement(2);
-        array.insertElement(4, 4);
-        array.insertElement(3, 3);
+        array.insertElement(24);
+        array.insertElement(12);
+        array.insertElement(5);
+        array.insertElement(53);
+        array.insertElement(12);
+        //array.printArray();
+        //array.deleteElement(2);
+        array.sort();
         array.printArray();
-        array.deleteElement(2);
-        array.printArray();
+        MyArray arrayA = new MyArray(5);
+        arrayA.insertElement(25);
+        arrayA.insertElement(21);
+        arrayA.insertElement(22);
+        arrayA.insertElement(54);
+        arrayA.insertElement(32);
+        arrayA.sort();
+        arrayA.printArray();
+        MyArray.mergeArray(arrayA.getData(),array.getData()).printArray();
     }
 
 }

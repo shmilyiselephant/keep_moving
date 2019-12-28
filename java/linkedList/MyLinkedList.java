@@ -40,13 +40,14 @@ public class MyLinkedList{
     }
 
     public Node reverseList(Node head) {
-        Node reverseHead = null;
-        Node curr = head;
+        Node reverseHead = null; //previous node
+        Node curr = head; //current node
+        //current refers to the next node, and move current and previous nodes backwards
         while (curr != null) {
-            Node tmpNext = curr.next;
-            curr.next = reverseHead;
-            reverseHead = curr;
-            curr = tmpNext;
+            Node tmpNext = curr.next;  //store the tmp node
+            curr.next = reverseHead;    // current node refers to his previous node
+            reverseHead = curr; // previous node move backwards
+            curr = tmpNext; //current node move backwards
         }
         printList(reverseHead);
         return reverseHead;
