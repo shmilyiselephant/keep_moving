@@ -1,2 +1,6 @@
 # keep_moving
-Rewrite all training codes from geek time. Do more thinking after repeat and never copy.
+Rewrite major data structures and algorithms in java & python. 
+
+Python parts is mostly copied from algo/wangzheng.
+
+Java parts is implemented by myself.
