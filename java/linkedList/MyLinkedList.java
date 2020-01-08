@@ -32,9 +32,9 @@ public class MyLinkedList{
         head = beforeHead.next;
     }
 
-    public void printList(Node head) {
+    public void printList() {
         for (Node tmp = head; tmp != null; tmp = tmp.next) {
-            System.out.printf("%d ", tmp.data);
+            System.out.printf("%d->", tmp.data);
         }
         System.out.println();
     }
@@ -49,24 +49,62 @@ public class MyLinkedList{
             reverseHead = curr; // previous node move backwards
             curr = tmpNext; //current node move backwards
         }
-        printList(reverseHead);
+        printList();
         return reverseHead;
     }
+
+    public static Node mergeList(Node headA, Node headB) {
+        Node newHead = new Node();
+        Node currNew = newHead;
+        Node currA = headA;
+        Node currB = headB;
+        while (currA != null && currB != null) {
+            if (currA.data >= currB.data) {
+                currNew.next = currB;
+                currB = currB.next;
+            } else {
+                currNew.next = currA;
+                currA = currA.next;
+            }
+            currNew = currNew.next;
+        }
+        Node curr = currA != null ? currA : currB;
+        currNew.next = curr;
+        return newHead.next;
+    }
+
+    public Node findMidNode() {
+        Node slow = head;
+        Node fast = head;
+        //different condition for null
+        while(fast.next != null && slow != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+
     public static void main(String args[]) {
-        MyLinkedList myList = new MyLinkedList(new Node(9));
-        myList.insertNode(new Node(2));
-        myList.insertNode(new Node(3));
-        //myList.insertNode(new Node(4));
-        //myList.printList(myList.getHead());
-        //myList.deleteNode(3);
-        myList.printList(myList.getHead());
-        myList.reverseList(myList.getHead());
+        MyLinkedList myList = new MyLinkedList(new Node(0));
+        MyLinkedList myListA = new MyLinkedList(new Node(2));
+        for (int i = 0; i < 6; i++) {
+            myList.insertNode(new Node(i + 1 + myList.head.data));
+            myListA.insertNode(new Node(i + 1 + myListA.head.data));
+        }
+        myList.printList();
+        myListA.printList();
+        Node mergeHead = MyLinkedList.mergeList(myListA.head, myList.head);
+        MyLinkedList mergeList = new MyLinkedList(mergeHead);
+        mergeList.printList();
+        System.out.println("middle node = "  + myListA.findMidNode().data);
     }
 }
 
 class Node {
     public Node next;
     public int data;
+
+    public Node() {}
 
     public Node(int value) {
         data = value;

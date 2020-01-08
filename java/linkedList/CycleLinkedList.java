@@ -1,5 +1,7 @@
 package linkedList;
 
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+
 import java.util.Random;
 
 /**
@@ -8,8 +10,8 @@ import java.util.Random;
  * @decription
  */
 public class CycleLinkedList {
-    private CycleNode head;
-    private CycleNode end;
+    public CycleNode head;
+    public CycleNode end;
 
     public CycleLinkedList(CycleNode head, CycleNode end) {
         head.next = end;
@@ -19,6 +21,16 @@ public class CycleLinkedList {
     }
 
     public void printList() {
+        CycleNode curr = head.next;
+        System.out.print(head.data + "->");
+        while(curr != head) {
+            System.out.print(curr.data + "->");
+            curr = curr.next;
+        }
+        System.out.println();
+    }
+
+    public void printList(CycleNode head) {
         CycleNode curr = head.next;
         System.out.print(head.data + "->");
         while(curr != head) {
@@ -75,6 +87,30 @@ public class CycleLinkedList {
         if (curr.data == data) deleteEndNode();
     }
 
+    /*
+    public void reverseList() {
+        int headData = head.data;
+        int endData = end.data;
+        deleteHeadNode();
+        insertHeadNode(endData);
+        deleteEndNode();
+        insertEndNode(headData);
+        printList();
+        reverseMajor();
+        printList();
+    }
+
+    public void reverseMajor() {
+        CycleNode curr = head.next;
+        CycleNode newHead = head;
+        while (curr != end) {
+            CycleNode tmpNext = curr.next;
+            curr.next = newHead;
+            newHead = curr;
+            curr = tmpNext;
+        }
+    }*/
+
     public static void main(String args[]) {
         Random r = new Random();
         CycleNode headNode = new CycleNode(r.nextInt(10));
@@ -83,18 +119,18 @@ public class CycleLinkedList {
         cycleList.printList();
         cycleList.insertHeadNode(3);
         cycleList.insertEndNode(2);
-        cycleList.insertEndNode(r.nextInt(10));
-        cycleList.insertEndNode(r.nextInt(10));
-        cycleList.insertEndNode(r.nextInt(10));
-        cycleList.insertEndNode(r.nextInt(10));
+        for (int i = 0; i < 5; i++)
+            cycleList.insertEndNode(r.nextInt(10));
         cycleList.printList();
-        cycleList.deleteHeadNode();
-        cycleList.printList();
-        cycleList.deleteEndNode();
-        cycleList.printList();
-        cycleList.deleteNode(2);
-        cycleList.deleteNode(3);
-        cycleList.printList();
+        //cycleList.deleteHeadNode();
+        //cycleList.printList();
+        //cycleList.deleteEndNode();
+        //cycleList.printList();
+        //cycleList.deleteNode(2);
+        //cycleList.deleteNode(3);
+        //cycleList.printList();
+        //cycleList.reverseList();
+        //cycleList.printList();
     }
 }
 
