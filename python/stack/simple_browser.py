@@ -54,6 +54,7 @@ if __name__ == "__main__":
 
     if browser.can_forward():
         browser.forward()
+        browser.forward()
 
     browser.back()
     browser.back()
