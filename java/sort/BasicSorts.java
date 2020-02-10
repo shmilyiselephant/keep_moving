@@ -17,13 +17,15 @@ public class BasicSorts {
             data[i] = r.nextInt(100);
     }
 
-    public int[] getData() { return this.data;}
+    public int[] getData() {
+        return this.data;
+    }
 
     public void bubbleSort() {
         System.out.print("bubblesort: ");
         for (int i = 0; i < data.length; i++) {
             int tmp = 0;
-            for (int j = i+1; j < data.length; j++) {
+            for (int j = i + 1; j < data.length; j++) {
                 if (data[j] < data[i]) {
                     tmp = data[j];
                     data[j] = data[i];
@@ -38,15 +40,15 @@ public class BasicSorts {
         System.out.print("insertsort: ");
         for (int i = 1; i < data.length; i++) {
             int tmp = data[i];
-            for (int j = i-1; j >= 0; j--) {
+            for (int j = i - 1; j >= 0; j--) {
                 if (data[j] < tmp) {
-                    for (int k = i; k > j+1; k--)
-                        data[k] = data[k-1];
-                    data[j+1] = tmp;
+                    for (int k = i; k > j + 1; k--)
+                        data[k] = data[k - 1];
+                    data[j + 1] = tmp;
                     break;
                 } else if (j == 0) {
                     for (int q = i; q > 0; q--)
-                        data[q] = data[q-1];
+                        data[q] = data[q - 1];
                     data[0] = tmp;
                 }
             }
@@ -57,15 +59,15 @@ public class BasicSorts {
     public void insertSort2() {
         System.out.print("insertsort2: ");
         int temp;
-        for (int i=1;i<data.length;i++){
+        for (int i = 1; i < data.length; i++) {
             //待排元素小于有序序列的最后一个元素时，向前插入
-            if (data[i]<data[i-1]){
+            if (data[i] < data[i - 1]) {
                 temp = data[i];
-                for (int j=i;j>=0;j--){
-                    if (j>0 && data[j-1]>temp) {
-                        data[j]=data[j-1];
-                    }else {
-                        data[j]=temp;
+                for (int j = i; j >= 0; j--) {
+                    if (j > 0 && data[j - 1] > temp) {
+                        data[j] = data[j - 1];
+                    } else {
+                        data[j] = temp;
                         break;
                     }
                     printElement();
@@ -80,7 +82,7 @@ public class BasicSorts {
         System.out.print("selectsort: ");
         for (int i = 0; i < data.length; i++) {
             int minIndex = i;
-            for (int j = i+1; j < data.length; j++) {
+            for (int j = i + 1; j < data.length; j++) {
                 if (data[j] < data[minIndex]) minIndex = j;
             }
             int tmp = data[minIndex];

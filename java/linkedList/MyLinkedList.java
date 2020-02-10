@@ -1,5 +1,8 @@
 package linkedList;
 
+import java.util.List;
+import java.util.Random;
+
 public class MyLinkedList{
     public Node head;
 
@@ -21,6 +24,16 @@ public class MyLinkedList{
         }
     }
 
+    public int getLength(){
+        Node curr = head;
+        int length = 0;
+        while (curr != null) {
+            length++;
+            curr = curr.next;
+        }
+        return length;
+    }
+
     public void deleteNode(int value) {
         Node beforeHead = new Node(-1);
         beforeHead.next = head;
@@ -37,6 +50,28 @@ public class MyLinkedList{
             System.out.printf("%d->", tmp.data);
         }
         System.out.println();
+    }
+
+    public boolean contains(int data) {
+        Node curr = head;
+        while (curr != null && curr.data != data) {
+            curr = curr.next;
+        }
+        return curr != null;
+    }
+
+    public void containsAdd(int data) {
+        System.out.print("ContainsAdd " + data + " ");
+        if (!this.contains(data))
+            this.insertNode(new Node(data));
+        this.printList();
+    }
+
+    public void containsDel(int data) {
+        System.out.print("ContainsDel " + data + " ");
+        if (this.contains(data))
+            this.deleteNode(data);
+        this.printList();
     }
 
     public Node reverseList(Node head) {
@@ -93,6 +128,11 @@ public class MyLinkedList{
         }
         myList.printList();
         myListA.printList();
+        System.out.println("myList length:"+myList.getLength());
+        int test = new Random().nextInt(12);
+        System.out.println("myList contains " + test + " "+ myList.contains(test));
+        myList.containsAdd(test);
+        myList.containsDel(test);
         Node mergeHead = MyLinkedList.mergeList(myListA.head, myList.head);
         MyLinkedList mergeList = new MyLinkedList(mergeHead);
         mergeList.printList();

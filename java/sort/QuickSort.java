@@ -62,6 +62,40 @@ public class QuickSort{
         return i;
     }
 
+    public static void quickSort(int[] a) {
+        quickSortInternally(a, 0, a.length);
+    }
+
+    public static void quickSortInternal(int[] a, int left, int right) {
+        if (left <= right) return;
+
+        int q = partition(a, left, right);
+        quickSortInternal(a, left, q);
+        quickSortInternal(a, q+1, right);
+    }
+
+    public static int partition1(int[] a, int left, int right) {
+        int pivot = a[right];
+        int i = left;
+        for (int j = left; j < right; j++) {
+            if (a[j] < pivot) {
+                if (i == j) ++i;
+                else {
+                    //swap
+                    int tmp = a[i];
+                    a[i] = a[j];
+                    a[j] = tmp;
+                }
+            }
+        }
+
+        int tmp = a[i];
+        a[i] = a[right];
+        a[right] = tmp;
+
+        return i;
+    }
+
 
     public static void main(String args[]) {
         int[] a = {34,32,12,41,24,56,67,98};
