@@ -16,7 +16,7 @@ public class TopKAns {
         int[] cases = new int[caseSize];
         Random r = new Random();
         for(int i = 0; i < caseSize; i++) {
-            cases[i] = r.nextInt(10000);
+            cases[i] = r.nextInt(1000000);
         }
         MinHeap.printData(cases);
         MinHeap minHeap = new MinHeap(k);
@@ -33,7 +33,7 @@ public class TopKAns {
     }
 
     public static void main(String[] args) {
-        int[] topKs = getTopK(10000, 5);
+        int[] topKs = getTopK(10000, 100);
         MinHeap.printData(topKs);
     }
 }
