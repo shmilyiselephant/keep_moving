@@ -89,7 +89,7 @@ public class MyLinkedList{
     }
 
     public static Node mergeList(Node headA, Node headB) {
-        Node newHead = new Node();
+        Node newHead = new Node(); //哨兵结点
         Node currNew = newHead;
         Node currA = headA;
         Node currB = headB;

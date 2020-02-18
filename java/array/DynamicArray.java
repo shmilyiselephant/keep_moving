@@ -3,7 +3,7 @@ package array;
 /**
  * @author shmilyiselephant
  * @date 27.12.19
- * @decription A dynamicarray which could be extended.
+ * @decription A dynamic array which could be extended.
  */
 
 public class DynamicArray {

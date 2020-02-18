@@ -47,10 +47,10 @@ public class QuickSort{
         int i = p;
         for (int j = p; j < r; ++j) {
             if (a[j] < pivot) {
-                if (i == j) ++i;
+                if (i == j) ++i; //i => the index of first unsorted value
                 else {
                     int tmp = a[i];
-                    a[i++] = a[j];
+                    a[i++] = a[j]; //a[i] = a[j]; i++;
                     a[j] = tmp;
                 }
             }
@@ -62,43 +62,8 @@ public class QuickSort{
         return i;
     }
 
-    public static void quickSort(int[] a) {
-        quickSortInternally(a, 0, a.length);
-    }
-
-    public static void quickSortInternal(int[] a, int left, int right) {
-        if (left <= right) return;
-
-        int q = partition(a, left, right);
-        quickSortInternal(a, left, q);
-        quickSortInternal(a, q+1, right);
-    }
-
-    public static int partition1(int[] a, int left, int right) {
-        int pivot = a[right];
-        int i = left;
-        for (int j = left; j < right; j++) {
-            if (a[j] < pivot) {
-                if (i == j) ++i;
-                else {
-                    //swap
-                    int tmp = a[i];
-                    a[i] = a[j];
-                    a[j] = tmp;
-                }
-            }
-        }
-
-        int tmp = a[i];
-        a[i] = a[right];
-        a[right] = tmp;
-
-        return i;
-    }
-
-
     public static void main(String args[]) {
-        int[] a = {34,32,12,41,24,56,67,98};
+        int[] a = {34,32,12,41,24,56,67,98,45,73,53,6,82};
         //quickSort(a, 0, a.length-1);
         quickSort(a, a.length);
         for(int e : a)

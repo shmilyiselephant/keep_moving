@@ -30,6 +30,8 @@ public class VectorGraph {
     }
 
     public void bfs(int s, int t) {
+        s--;
+        t--;
         if (s == t) return;
         boolean[] visited = new boolean[v];
         visited[s] = true;
@@ -71,5 +73,6 @@ public class VectorGraph {
         aGraph.addEdge(4,3);
         aGraph.addEdge(3,5);
         aGraph.printGraph();
+        aGraph.bfs(3,5);
     }
 }

@@ -70,12 +70,9 @@ public class BasicSorts {
                         data[j] = temp;
                         break;
                     }
-                    printElement();
                 }
-                printElement();
             }
         }
-        printElement();
     }
 
     public void selectSort() {
@@ -98,19 +95,101 @@ public class BasicSorts {
         System.out.println();
     }
 
+    public static void mergeSort(int[] data, int start, int end) {
+        if (start < end) {
+            int mid = (start + end) / 2;
+            mergeSort(data, start, mid);
+            mergeSort(data, mid+1, end);
+            merge(data, start, mid, end);
+        }
+    }
+
+    public static void merge(int[] data, int start, int mid, int end) {
+        int left = start, right = mid+1, k=start;
+        int[] tmp = new int[data.length];
+
+        while (left <= mid && right <= end) {
+            if (data[left] <= data[right]) {
+                tmp[k++] = data[left++];
+            } else {
+                tmp[k++] = data[right++];
+            }
+        }
+
+        while (left <= mid) tmp[k++] = data[left++];
+        while (right <= end) tmp[k++] = data[right++];
+
+        for (int i = start; i <= end; i++) {
+            data[i] = tmp[i];
+        }
+    }
+
+
+    public static void quickSort(int[] a, int left, int right) {
+        if (left >= right) return;
+
+        int p = parition(a, left, right);
+        quickSort(a, left, p-1);
+        quickSort(a, p+1, right);
+    }
+
+    public static int parition(int[] a, int left, int right) {
+        int pivot = a[right];
+        int i = left;
+        for (int j = left; j < right; ++j) {
+            if (a[j] < pivot) {
+                if (j == i) i++;
+                else {
+                    int tmp = a[i];
+                    a[i++] = a[j];
+                    a[j] = tmp;
+                }
+            }
+        }
+        int tmp = a[i];
+        a[i] = a[right];
+        a[right] = tmp;
+
+        return i;
+    }
+
+    public static int findKthLargest(int[] data, int k) {
+        if (k < 1 || k > data.length-1) return -1;
+
+        int p = parition(data, 0, data.length-1);
+        while (p + 1 != k) {
+            if (p + 1 > k) {
+                p = parition(data, 0, p - 1);
+            } else if (p + 1 < k) {
+                p = parition(data, p + 1, data.length - 1);
+            }
+        }
+
+        return data[p];
+    }
+
     public static void main(String args[]) {
-        //BasicSorts testArray1 = new BasicSorts(6);
-        //testArray1.printElement();
-        //testArray1.bubbleSort();
+        BasicSorts testArray1 = new BasicSorts(6);
+        testArray1.printElement();
+        testArray1.bubbleSort();
         BasicSorts testArray2 = new BasicSorts(6);
         testArray2.printElement();
         testArray2.insertSort2();
-        //BasicSorts testArray3 = new BasicSorts(6);
-        //testArray3.printElement();
-        //testArray3.insertSort();
-        //BasicSorts testArray4 = new BasicSorts(6);
-        //testArray4.printElement();
-        //testArray4.selectSort();
+        BasicSorts testArray3 = new BasicSorts(6);
+        testArray3.printElement();
+        testArray3.insertSort();
+        BasicSorts testArray4 = new BasicSorts(6);
+        testArray4.printElement();
+        testArray4.selectSort();
+        BasicSorts testArray5 = new BasicSorts(10);
+        testArray5.printElement();
+        mergeSort(testArray5.getData(), 0, testArray5.getData().length-1);
+        testArray5.printElement();
+        BasicSorts testArray6 = new BasicSorts(10);
+        testArray6.printElement();
+        quickSort(testArray6.getData(), 0, testArray6.getData().length-1);
+        testArray6.printElement();
+        System.out.println(findKthLargest(testArray6.getData(), 5));
     }
 }
 

@@ -1,5 +1,13 @@
 package heap;
 
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+
+import java.util.Map;
+
+
+import java.util.Arrays;
+import java.util.HashMap;
+
 /**
  * @author shmilyiselephant
  * @date 11.02.20
@@ -85,5 +93,7 @@ public class MinHeap {
         MinHeap.printData(aHeap.getData());
         aHeap.updateMin(-4);
         MinHeap.printData(aHeap.getData());
+        char a = '我';
+        System.out.print(a > 255);
     }
 }

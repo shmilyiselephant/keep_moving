@@ -28,9 +28,9 @@ public class BinarySearch {
         while (left <= right) {
             if (data[mid] == target) return mid;
             if (data[mid] > target) {
-                mid = (left + mid) / 2;
+                mid = (left + mid) >> 1;
             } else {
-                mid = (right + mid) / 2;
+                mid = (right + mid) >> 1;
             }
         }
         return -1;

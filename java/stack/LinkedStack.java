@@ -5,7 +5,7 @@ import sun.awt.image.ImageWatched;
 /**
  * @author shmilyiselephant
  * @date 09.01.20
- * @decription
+ * @decription stack based on linkedlist
  */
 public class LinkedStack {
     private Node head;
@@ -30,34 +30,33 @@ public class LinkedStack {
             head = tmp;
             curr = tmp;
         }
-        //System.out.println(tmp.data + " pushed!");
+        System.out.println(tmp.data + " pushed!");
     }
 
     public int pop() {
         if (curr == null) {
-            //System.out.println("empty stack");
+            System.out.println("empty stack");
             return Integer.MIN_VALUE;
         }
         int res = curr.data;
         if (curr == head) {
             head = null;
             curr = null;
-            //System.out.println(res + " poped, stack empty");
+            System.out.println(res + " poped, stack empty");
         } else {
             Node tmp = head;
             while (tmp.next != curr) {
                 tmp = tmp.next;
             }
             curr = tmp;
-            //System.out.println(res + " poped");
+            System.out.println(res + " poped");
         }
         return res;
     }
 
     public static void main(String args[]) {
         Node newHead = new Node(3);
-        //LinkedStack aStack = new LinkedStack(newHead);
-        LinkedStack aStack = new LinkedStack();
+        LinkedStack aStack = new LinkedStack(newHead);
         for (int i = 0; i < 10; i++)
             aStack.push(i);
         System.out.println();

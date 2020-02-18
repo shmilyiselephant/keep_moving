@@ -66,6 +66,6 @@ public class FindKthNumber {
         System.out.println(k);
         QuickSort.quickSort(a, a.length);
         print(a);
-        System.out.printf("%dth number is %d%n",2, kthSmallest(a, 2));
+        System.out.printf("%dth number is %d%n",6, kthSmallest(a, 6));
     }
 }
